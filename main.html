@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <p>1 日幣 = 0.278 台幣</p>
+    <!-- complicate -->
+    <!-- <div>台幣<input type="text" v-model="twd" v-on:input="twd2jpy"></div> -->
+    <!-- <div>日幣<input type="text" v-model="jpy" v-on:input="jpy2twd"></div> -->
+
+    <div>台幣<input type="text" v-model="twd"></div>
+    <div>日幣<input type="text" v-model="jpy"></div>
+    <hr>
+
+    <button :disabled="isBtnDisabled">click me!</button>
+    <hr>
+
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+    <p><span>Multitline message is:</span> {{ message }}</p>
+    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+    <hr>
+
+    <!-- radio -->
+    <div>
+      <input type="radio" id="one" value="1" v-model="picked">
+      <label for="one">One</label>
+    </div>
+    <div>
+      <input type="radio" id="two" value="2" v-model="picked">
+      <label for="two">Two</label>
+    </div>
+
+    <span>Picked: {{ picked }}</span>
+    <hr>
+
+    <!-- checkbox -->
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <input type="checkbox" id="mary" value="Mary" v-model="checkedNames">
+    <label for="mary">Mary</label>
+    <br>
+    <p>Checked names: {{ checkedNames }}</p>
+
+    <input type="checkbox" id="checkbox-test" v-model="isChecked">
+    <label for="checkbox-test">Status: {{ isChecked }}</label>
+    <hr>
+
+    <!-- select -->
+    <select v-model="selected">
+      <option disabled value="">請選擇</option>
+      <option></option>
+      <option>台北市</option>
+      <option>新北市</option>
+      <option>基隆市</option>
+    </select>
+
+    <p>Selected: {{ selected || '未選擇' }}</p>
+    <hr>
+    
+    <!-- v-model.lazy 改為監聽change event, 在使用者離開輸入框時才會進行更新 -->
+    <input v-model.lazy="msg" placeholder="edit me">
+    <p>Lazy Message is: {{ msg }}</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="app.js"></script>
+</body>
+</html>
