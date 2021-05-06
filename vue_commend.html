@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <link rel="stylesheet" href="main.css">
+  <title>Vue practice</title>
 </head>
 <body>
   <div id="app">
@@ -64,13 +65,53 @@
 
     <p>Selected: {{ selected || '未選擇' }}</p>
     <hr>
-    
+
     <!-- v-model.lazy 改為監聽change event, 在使用者離開輸入框時才會進行更新 -->
     <input v-model.lazy="msg" placeholder="edit me">
     <p>Lazy Message is: {{ msg }}</p>
+
+    <!-- .number -->
+    <input v-model.number="num1"> + <input v-model.number="num2"> = {{ sum }}
+    <hr>
+
+    <!-- .trim -->
+    <input v-model.trim="msg_trim">
+    <hr>
+
+    <!-- v-text (v-text will override element children.) -->
+    <div v-text="text">world</div>
+    <hr>
+
+    <!-- v-html -->
+    <div v-html="html_text"></div>
+    <hr>
+
+    <!-- v-once (只會顯示最一開始的值) -->
+    <div v-once>{{message}}</div>
+    <hr>
+
+    <!-- v-pre (消除 {{}} 的特異功能) -->
+    <div v-pre>{{ message }}</div>
+    <hr>
+
+    <!-- css binding -->
+    <input
+      type="text"
+      v-model.trim="text_for_css_ts"
+      v-bind:class="{ 'error': text_for_css_ts.length > 10 }"
+    >
+    <hr>
+
+    <!-- vue dynamic style -->
+    <input
+      type="text"
+      v-model.trim="text_for_js_attr_ts"
+      placeholder="請勿超過10個字"
+      :style="msgStyle"
+    >
   </div>
 
   <script src="https://unpkg.com/vue@next"></script>
-  <script src="app.js"></script>
+  <script src="commend.js"></script>
 </body>
 </html>
