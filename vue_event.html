@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+  <title>Vue practice</title>
+</head>
+<body>
+  <div id="app">
+    <!-- v-on example -->
+    <p>Count: {{ count }}</p>
+    <button @click="plus">Plus</button>
+    <hr>
+
+    <!-- get event -->
+    <button @click="clickclick">Click</button>
+    <hr>
+
+    <!-- get event & argument -->
+    <p><input v-model.number="amount"></p>
+    <p>Count: {{ count }}</p>
+    <button @click="plus_amount(amount, $event)">Plus</button>
+    <hr>
+
+      <!-- @click.stop (event.stopPropagation()) 讓alert停在使用者觸發的那個標籤上，不要向外傳遞 -->
+    <div class="outer" @click="alert('Outer')">
+      <span>Outer</span>
+      <div class="inner" @click.stop="alert('Inner')">Inner</div>
+    </div>
+    <hr>
+
+    <!-- @click.prevent 阻擋元素的預設行為 -->
+    <a href="#" class='btn' @click.prevent="alert('Hello')">click me!</a>
+    <hr>
+
+    <!-- @click.capture 捕獲子元素事件，典籍內層會先顯示外層 -->
+    <div class="outer" @click.capture="alert('Outer')">
+      <span>Outer</span>
+      <div class="inner" @click="alert('Inner')">Inner</div>
+    </div>
+    <hr>
+
+    <!-- @click.self 只會觸發自己的事件行為，內層元素傳遞出來的事件不會觸發 -->
+    <div class="model-mask" :style="modelStyle">
+      <div class="model-container" @click.self=toggleModel>
+        <div class="model-body">Hello!</div>
+      </div>
+    </div>
+
+    <button @click=toggleModel>Click me</button>
+    <hr>
+
+    <!-- @click.once 只會觸發一次 -->
+    <p>Count: {{ count }}</p>
+    <button @click.once="plus_once">Plus</button>
+    <hr>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="event.js"></script>
+</body>
+</html>
