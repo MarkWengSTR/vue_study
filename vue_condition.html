@@ -7,6 +7,81 @@
 </head>
 <body>
   <div id="app">
+    <label>
+      <input type="checkbox" v-model="isShow"> isShow: {{ isShow }}
+    </label>
+
+    <div class="wrap">
+      <div v-if="isShow">V-if</div>
+
+      <!-- v-show隱藏 display:none -->
+      <div v-show="isShow">V-show</div>
+    </div>
+    <hr>
+
+    <!-- v-if -->
+    <h4>count: {{count}}</h4>
+    <button @click="count++">Plus</button>
+    <button @click="count=0">Reset</button>
+
+    <div class="wrap">
+      <div v-if="count === 0" style="background-color: #f00;">Block A</div>
+      <div v-else-if="count < 5" style="background-color: green;">Block B</div>
+      <div v-else style="background-color: #00f;">Block C</div>
+    </div>
+    <hr>
+
+    <!-- multiple v-if in template -->
+    <template v-if="t_value === 'A'">
+      <h1>Title A</h1>
+      <p>Paragraph A - 1</p>
+      <p>Paragraph A - 2</p>
+    </template>
+
+    <template v-else>
+      <h1>Title B</h1>
+      <p>Paragraph B - 1</p>
+      <p>Paragraph B - 2</p>
+    </template>
+    <hr>
+
+    <!-- v-for with array -->
+    <ul>
+      <li v-for="(item, index) in arr">{{ index }} / {{ item }}</li>
+    </ul>
+    <hr>
+
+    <!-- v-for with object -->
+    <ul>
+      <li v-for="(val, key) in books">{{ key }} : {{ val }}</li>
+    </ul>
+    <hr>
+
+    <!-- v-for in range -->
+    <ul class="pagination">
+      <li class="page-item" @click.prevent><a class="page-link" href="">&lt;</a></li>
+      <li class="page-item" v-for="page in 10">
+        <a class="page-link" href="">{{ page }}</a>
+      </li>
+      <li class="page-item" @click.prevent><a class="page-link" href="">&gt;</a></li>
+    </ul>
+    <hr>
+
+    <!-- key attribute in v-for -->
+    <h1>Todo</h1>
+    <ul>
+      <li v-for="i in todoLists">
+        <label><input v-model="i.isDone" type="checkbox">{{ i.title }}</label>
+      </li>
+    </ul>
+
+    <h1>Done</h1>
+    <ul>
+      <li v-for="i in doneLists">
+        <label><input v-model="i.isDone" type="checkbox">{{ i.title }}</label>
+      </li>
+    </ul>
+
   </div>
 
   <script src="https://unpkg.com/vue@next"></script>
