@@ -26,8 +26,18 @@ const vm = Vue.createApp({
           title: '選項3',
           isDone: false
         },
-      ]
+      ],
+      list_test: [ "Vue", "is", "Awesome" ],
     }
+  },
+  created() {
+    console.log("create");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  unmounted() {
+    console.log("unmounted");
   },
   computed: {
     todoLists(){
@@ -35,6 +45,12 @@ const vm = Vue.createApp({
     },
     doneLists() {
       return this.lists.filter( d => d.isDone )
+    }
+  },
+  methods: {
+    changeVal () {
+      // this.$set(this.list_test, 0, "08JS")
+      alert(this.list_test);
     }
   }
 }).mount('#app')

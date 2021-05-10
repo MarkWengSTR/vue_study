@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+  <title>Vue practice</title>
+</head>
+<body>
+  <div id="app">
+    <h3>透過修改內容來觀察vue的生命週期</h3>
+    <hr>
+    
+    <div class="wrap">
+      <div class="demo">
+        <demo-app v-if="isActive" @update="pushMsg"/>
+      </div>
+
+      <div class="inspector">
+        <div class="inspector-msg" v-for="(m, idx) in msg" :class="{ 'highlight' : m.isHighlight }" :key="m.msg + idx">{{ m.msg }}</div>
+      </div>
+
+      <hr>
+      <button @click="toggle">{{ (!isActive) ? 'Active' : 'Destroy' }} The Vue instance</button>
+      <button @click="empty">Empty the inspector</button>
+    </div>
+    <hr>
+    
+    <!-- vue state update -->
+    <div class="messages">
+      <div v-for="m in stateMessages">{{ m }}</div>
+    </div>
+
+    <input type="text"
+      placeholder="輸入任意文字後按下 enter 鍵"
+      v-model.trim="stateMsg"
+      @keydown.enter="addToMessages">
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="life_cycle.js"></script>
+</body>
+</html>

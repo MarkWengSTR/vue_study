@@ -70,17 +70,25 @@
     <!-- key attribute in v-for -->
     <h1>Todo</h1>
     <ul>
-      <li v-for="i in todoLists">
+      <li v-for="i in todoLists" :key="i.id">
         <label><input v-model="i.isDone" type="checkbox">{{ i.title }}</label>
       </li>
     </ul>
 
     <h1>Done</h1>
     <ul>
-      <li v-for="i in doneLists">
+      <li v-for="i in doneLists" :key="i.id">
         <label><input v-model="i.isDone" type="checkbox">{{ i.title }}</label>
       </li>
     </ul>
+    <hr>
+
+    <!-- renew when array add new element -->
+    <ul>
+      <li v-for="n in list_test">{{ n }}</li>
+    </ul>
+
+    <button @click="changeVal">click</button>
 
   </div>
 
