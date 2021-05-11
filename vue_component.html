@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+  <title>Vue practice</title>
+</head>
+<body>
+  <div id="app">
+    <!-- <h3>{{ msg }}</h3> -->
+    <!-- <my-component :parent-msg="msg"></my-component> -->
+    <hr>
+
+    <ul v-for="book in books" class="book">
+      <li>{{ book.name }}</li>
+      <li>{{ book.author }}</li>
+      <li>{{ book.publishedAt }}</li>
+    </ul>
+
+    <!-- Wrong use for component -->
+    <!-- <my-component v-for="book in books" :key="book.id" :book-info="book"></my-component> -->
+
+    <!-- correct use -->
+    <!-- <my-component -->
+    <!--   v-for="book in books" -->
+    <!--   :key="book.id" -->
+    <!--   :name="book.name" -->
+    <!--   :author="book.author" -->
+    <!--   :published-at="book.publishedAt" -->
+    <!--   /> -->
+    <!-- <my-component -->
+    <!--   v-for="book in books" -->
+    <!--   v-bind="book" -->
+    <!--   /> -->
+    <!-- <my-component -->
+    <!--   v-for="book in books" -->
+    <!--   :key="book.id" -->
+    <!--   :book-name="book.name" -->
+    <!--   :author="book.author" -->
+    <!--   :published-at="book.publishedAt" -->
+    <!--   /> -->
+
+    <!-- watch the parent state to update component -->
+    <!-- <my-component -->
+    <!--   v-for="book in books" -->
+    <!--   :key="idx" -->
+    <!--   v-bind="book" -->
+    <!--   @update="updateInfo" -->
+    <!--   /> -->
+    <!-- <hr> -->
+    
+    <!-- v-model in child component -->
+    <h1>{{message}}</h1>
+    <my-component v-model="message"/>
+
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="component.js"></script>
+</body>
+</html>
