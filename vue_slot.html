@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+  <title>Vue practice</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{msg}}</h1>
+    <custom-component></custom-component>
+    <light-box>
+      <template v-slot:header>
+        <h2>HEADER 棒棒</h2>
+      </template>
+
+      <template v-slot:footer>
+        <h2>FOOTER 棒棒</h2>
+      </template>
+
+      <div>
+        <a href="#">傳送門</a>
+      </div>
+    </light-box>
+    <label v-for="opt in options">
+      <input type="radio" :value="opt" v-model="dynamic_slot_name"> {{opt}}
+    </label>
+
+    <light-box>
+      <template v-slot:[dynamic_slot_name]>
+        <h2>棒棒der</h2>
+      </template>
+    </light-box>
+
+    <p>
+      <select v-model="lang">
+        <option v-for="n in langOptions" :value="n.val">{{ n.name }}</option>
+      </select>
+    </p>
+
+    <light-box :lang="lang">
+      <template v-slot:default="{ hello }">
+        {{ langOptions.find(d => d.val === lang)['name'] }}
+        {{ hello }}
+      </template>
+    </light-box>
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="slot.js"></script>
+</body>
+</html>

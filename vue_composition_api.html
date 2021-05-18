@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+  <title>Vue practice</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Total: {{ sum }}</h1>
+    <button-counter @add-sum="plus"></button-counter>
+    <button-counter @add-sum="plus"></button-counter>
+    <button-reset></button-reset>
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="composition_api.js"></script>
+</body>
+</html>
