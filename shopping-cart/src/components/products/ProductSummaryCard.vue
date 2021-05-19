@@ -4,7 +4,7 @@
     <h5 class="price">Price: ${{ product.price.toFixed(2) }}</h5>
     <p class="description">Description: {{ description }}</p>
     <p class="text-muted">{{ product.category }}</p>
-    <button class="view-product-button">View</button>
+    <button class="view-product-button" @click="$emit('view-product', product)">View Product</button>
   </div>
 </template>
 
@@ -42,7 +42,7 @@
 
   button.view-product-button {
     padding: 10px;
-    background-color: rgb(79, 160, 189);
+    background-color: rgb(79, 160, 187);
     border: none;
     color: white;
     font-weight: bold;
